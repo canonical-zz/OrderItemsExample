@@ -34,6 +34,10 @@ There are a few things that are conspicuously missing, like data validation and 
 5. Set up the routes, add these to routes.rb and also delete index.html from the public folder
         map.resources :orders
         map.root :controller => :orders
-6. Create an order controller with standard restful actions (index, show, new, update, create, destroy) and basic views -- we used RyanB's nifty_scaffold and nifty_layout for this so that we would have a nice starting point for modifying the layout.
+6. Create an order controller with standard restful actions (index, show, new, update, create, destroy) and basic views -- I used RyanB's nifty_scaffold and nifty_layout for this so that we would have a nice starting point for modifying the layout.
+7. Add a partial for the line_items.  This needs to be one atomic "row", just the markup for that row.  It has a class="line_item" (note singular)
+8. Set the ID on the element that encloses all the child records to be "line_items" (note plural)  There is no magic in these names other than they are used by the helper functions that create the "add" and "remove" links.
+
+That's pretty much it, take a look.  Email me if you have any questions.
 
 

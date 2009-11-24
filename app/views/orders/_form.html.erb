@@ -5,7 +5,7 @@
       <%= f.text_field :customer_name %>
     </p>
 
-    <table>
+    <table id="line_items">
       <tr>
         <th>Item Name</th>
         <th>Quantity Ordered</th>
@@ -16,7 +16,8 @@
       <% f.fields_for :line_items do |line_item_form| %>
           <%= render :partial => 'line_item', :locals => {:form => line_item_form} %>
       <% end %>
-      
+
     </table>
+    <%= add_line_item_link f %>
     <p><%= f.submit "Submit" %></p>
 <% end %>
