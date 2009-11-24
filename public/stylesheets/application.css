@@ -12,6 +12,10 @@ a {
   color: #0000FF;
 }
 
+td,th {
+    padding-left: 10px;
+}
+
 .clear {
   clear: both;
   height: 0;

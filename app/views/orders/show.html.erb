@@ -2,8 +2,18 @@
 
 <p>
   <strong>Customer Name:</strong>
-  <%=h @order.customer_name %>
-</p>
+  <%=h @order.customer_name %></p>
+
+<table>
+<tr><th>Item Name</th><th>Quantity Ordered</th><th>Unit Cost</th></tr>  
+
+  <% @order.line_items.each do |line|  %>
+    <tr><td><%= line.item_name %></td>
+      <td><%= line.quantity %></td>
+      <td><%= line.price %></td></tr>
+  <% end %>
+</table>
+<%= @order.line_items.count == 0 ? "<p>(no line items for this order!)</p>" : "" %><br>
 
 <p>
   <%= link_to "Edit", edit_order_path(@order) %> |

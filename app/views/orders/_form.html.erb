@@ -1,11 +1,22 @@
 <% form_for @order do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :customer_name %><br />
-    <%= f.text_field :customer_name %>
-  </p>
+    <%= f.error_messages %>
+    <p>
+      <%= f.label :customer_name %><br/>
+      <%= f.text_field :customer_name %>
+    </p>
 
-    
+    <table>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity Ordered</th>
+        <th>Unit Cost</th>
+      </tr>
 
-  <p><%= f.submit "Submit" %></p>
+      <!-- Note: the partial that is rendered should be just one "atomic" record, not the surrounding markup -->
+      <% f.fields_for :line_items do |line_item_form| %>
+          <%= render :partial => 'line_item', :locals => {:form => line_item_form} %>
+      <% end %>
+      
+    </table>
+    <p><%= f.submit "Submit" %></p>
 <% end %>

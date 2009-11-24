@@ -3,10 +3,14 @@
 <table>
   <tr>
     <th>Customer Name</th>
+    <th>Order Date</th>
+    <th>Line Items</th>
   </tr>
   <% for order in @orders %>
     <tr>
       <td><%=h order.customer_name %></td>
+      <td><%=h order.created_at.strftime("%B %d,%Y") %></td>
+      <td><%=h order.line_items.count %></td>
       <td><%= link_to "Show", order %></td>
       <td><%= link_to "Edit", edit_order_path(order) %></td>
       <td><%= link_to "Destroy", order, :confirm => 'Are you sure?', :method => :delete %></td>
