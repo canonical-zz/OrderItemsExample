@@ -1,6 +1,11 @@
 == The Canonical Order-LineItem nested form example
 
-Blah, blah, blah
+This example was created to demonstrate using nested forms in Rails 2.3+, the example has been kept as simple as possible so that the key elements don't get obscured by extra features.  This example shows:
+    - Traditional master-detail style of form.  These show up as orders that have many line items, doctors that have many patients and so forth.
+    - We will CRUD both parent and child records through a single form
+    - This also demonstrates adding and removing child records using AJAX (well, no XML, so I guess it's just "AJA")
+
+There are a few things that are conspicuously missing, like data validation and testing.  That's not the point of the example, so they were left out on purpose.
 
 == How the sample was created
 
@@ -20,8 +25,8 @@ Blah, blah, blah
     In order.rb add:
         accepts_nested_attributes_for :line_items, , :allow_destroy => true
 5. Set up the routes, add these to routes.rb and also delete index.html from the public folder
-        map.resources :order
-        map.root :controller => :order
+        map.resources :orders
+        map.root :controller => :orders
 6. Create an order controller with standard restful actions (index, show, new, update, create, destroy) and basic views -- we used RyanB's nifty_scaffold and nifty_layout for this so that we would have a nice starting point for modifying the layout.
 
 

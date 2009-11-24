@@ -2,8 +2,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :orders
 
 
-  map.resources :order
-  map.root :controller => :order
+  map.resources :orders
+  map.root :controller => :orders
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

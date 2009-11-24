@@ -27,3 +27,66 @@ Migrating to CreateLineItems (20091124053845)
 [0m
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("line_items")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("orders")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-11-23 22:11:11) [GET]
+
+NameError (uninitialized constant OrderController):
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrdersController#index (for 127.0.0.1 at 2009-11-23 22:12:30) [GET]
+  [4;36;1mOrder Load (16.0ms)[0m   [0;1mSELECT * FROM "orders" [0m
+Rendering template within layouts/application
+Rendering orders/index
+Completed in 2890ms (View: 2812, DB: 16) | 200 OK [http://localhost/]
+
+
+Processing OrdersController#new (for 127.0.0.1 at 2009-11-23 22:12:50) [GET]
+Rendering template within layouts/application
+Rendering orders/new
+Rendered orders/_form (0.0ms)
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/orders/new]
+
+
+Processing OrdersController#create (for 127.0.0.1 at 2009-11-23 22:13:00) [POST]
+  Parameters: {"commit"=>"Submit", "order"=>{"customer_name"=>"Big Bob"}, "authenticity_token"=>"fb5mjBtXasesEYKRKpdD8NSLCmp5tJeGvxU+ETtX2LI="}
+  [4;35;1mOrder Create (0.0ms)[0m   [0mINSERT INTO "orders" ("customer_name", "updated_at", "created_at") VALUES('Big Bob', '2009-11-24 06:13:00', '2009-11-24 06:13:00')[0m
+Redirected to http://localhost/orders/1
+Completed in 78ms (DB: 0) | 302 Found [http://localhost/orders]
+
+
+Processing OrdersController#show (for 127.0.0.1 at 2009-11-23 22:13:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mOrder Load (0.0ms)[0m   [0;1mSELECT * FROM "orders" WHERE ("orders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering orders/show
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/orders/1]
+
+
+Processing OrdersController#index (for 127.0.0.1 at 2009-11-23 22:13:03) [GET]
+  [4;35;1mOrder Load (0.0ms)[0m   [0mSELECT * FROM "orders" [0m
+Rendering template within layouts/application
+Rendering orders/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/orders]
+
+
+Processing OrdersController#show (for 127.0.0.1 at 2009-11-23 22:14:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mOrder Load (0.0ms)[0m   [0;1mSELECT * FROM "orders" WHERE ("orders"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering orders/show
+Completed in 47ms (View: 32, DB: 0) | 200 OK [http://localhost/orders/1]
