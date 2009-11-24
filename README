@@ -1,37 +1,28 @@
-== Welcome to Rails
+== The Canonical Order-LineItem nested form example
 
-Rails is a web-application framework that includes everything needed to create 
-database-backed web applications according to the Model-View-Control pattern. 
+Blah, blah, blah
 
-This pattern splits the view (also called the presentation) into "dumb" templates
-that are primarily responsible for inserting pre-built data in between HTML tags.
-The model contains the "smart" domain objects (such as Account, Product, Person,
-Post) that holds all the business logic and knows how to persist themselves to
-a database. The controller handles the incoming requests (such as Save New Account,
-Update Product, Show Post) by manipulating the model and directing data to the view.
+== How the sample was created
 
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
-
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails.  You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
-
-
-== Getting Started
-
-1. At the command prompt, start a new Rails application using the <tt>rails</tt> command
-   and your application name. Ex: rails myapp
-2. Change directory into myapp and start the web server: <tt>script/server</tt> (run with --help for options)
-3. Go to http://localhost:3000/ and get "Welcome aboard: You're riding the Rails!"
-4. Follow the guidelines to start developing your application
+1. create an order model and migration:
+        script/generate model -s order customer_name:string
+2. Create a line_item model and migration:
+        script/generate model -s line_item item_name:string price:float quantity:integer order_id:integer
+        (note that we added a field called "order_id", this will be the foreign key that points to the order record)
+3. We're using sqlite3, so just run the migrations
+        rake db:migrate
+3. Then we set up the relationship between the two models.
+    In order.rb (the order model) we put:
+        has_many :line_items
+    In line_item.rb (the line item model) we put:
+        belongs_to :order
+4. A new feature in Rails 2.3 is "accepts_nested_attributes_for", this will allow us to handle the CRUD operations on the child records (line_item) automatically when we create or save the master (order) record.
+    In order.rb add:
+        accepts_nested_attributes_for :line_items, , :allow_destroy => true
+5. Set up the routes, add these to routes.rb and also delete index.html from the public folder
+        map.resources :order
+        map.root :controller => :order
+6. Create an order controller with standard restful actions (index, show, new, update, create, destroy) and basic views -- we used RyanB's nifty_scaffold and nifty_layout for this so that we would have a nice starting point for modifying the layout.
 
 
 == Web Servers

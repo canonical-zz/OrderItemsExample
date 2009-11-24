@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item_name: MyString
+  price: 1.5
+  quantity: 1
+  order_id: 1
+
+two:
+  item_name: MyString
+  price: 1.5
+  quantity: 1
+  order_id: 1
